@@ -44,6 +44,7 @@ in
       m = "git switch main";
       cc = "claude --dangerously-skip-permissions";
       co = "codex --yolo";
+      oc = "opencode --auto";
       vim = "nvim";
     };
   };
