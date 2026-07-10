@@ -11,6 +11,14 @@
 
   system.stateVersion = 6;
 
+  system.activationScripts.preActivation.text = ''
+    mkdir -p /Users/dylan/screenshots
+  '';
+
+  system.activationScripts.postActivation.text = ''
+    /usr/bin/killall SystemUIServer 2>/dev/null || true
+  '';
+
   system.defaults = {
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
@@ -29,6 +37,7 @@
     };
 
     finder.FXPreferredViewStyle = "Nlsv";  # list view by default
+    screencapture.location = "/Users/dylan/screenshots";
     finder.CreateDesktop = false;          # clean desktop
     trackpad.Clicking = true;              # tap to click
   };
