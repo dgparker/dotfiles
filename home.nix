@@ -19,13 +19,17 @@ in
     nerd-fonts.hack
   ];
   fonts.fontconfig.enable = true;
-  home.sessionVariables.EDITOR = "nvim";
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;      
     syntaxHighlighting.enable = true;  
     initContent = ''
+      export OPENCODE_ENABLE_EXA=1
+
       bindkey '^f' autosuggest-accept
 
       if [[ -r "$HOME/.zsh.local" ]]; then
@@ -74,6 +78,8 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".codex/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  home.file.".config/opencode/opencode.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/opencode/opencode.json";
   home.file.".config/opencode/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
 }

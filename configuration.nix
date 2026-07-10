@@ -56,6 +56,7 @@
       "kubernetes-cli"
       "k9s"
       "go"
+      "opencode"
       {
         name = "borders";
         start_service = true;
