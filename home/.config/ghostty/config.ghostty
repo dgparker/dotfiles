@@ -1,0 +1,9 @@
+macos-titlebar-proxy-icon = hidden
+title = 👻
+font-family = MonoLisa Nerd Font Mono 
+font-thicken = true
+font-size = 16
+theme = Catppuccin Macchiato
+background-opacity = 0.75
+window-decoration = none
+background-blur-radius = 40
