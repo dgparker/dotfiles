@@ -57,6 +57,7 @@
       "k9s"
       "go"
       "opencode"
+      "gh"
       {
         name = "borders";
         start_service = true;
