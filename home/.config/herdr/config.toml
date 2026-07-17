@@ -1,4 +1,8 @@
 onboarding = false
+
+[ui.sound]
+enabled = false
+
 [keys]
 prefix = "ctrl+a"
 
@@ -16,3 +20,6 @@ new_tab          = "prefix+c"
 workspace_picker = "prefix+w"
 goto             = "prefix+g"
 copy_mode        = "prefix+y"
+
+[ui]
+agent_panel_sort = "spaces"

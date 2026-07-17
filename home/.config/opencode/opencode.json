@@ -25,5 +25,15 @@
         }
       }
     }
+  },
+  "mcp": {
+    "fleetcmd": {
+      "command": [
+        "/opt/homebrew/bin/fleetcmd",
+        "mcp"
+      ],
+      "enabled": true,
+      "type": "local"
+    }
   }
 }

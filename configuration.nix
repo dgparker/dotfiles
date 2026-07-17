@@ -49,15 +49,23 @@
         name = "FelixKratz/formulae";
         trusted = true;
       }
+      {
+        name = "rjyo/moshi";
+        trusted = true;
+      }
     ];
 
     brews = [
+      "tmux"
       "herdr"
       "kubernetes-cli"
       "k9s"
       "go"
       "opencode"
       "gh"
+      "bufbuild/buf/buf"
+      "mosh"
+      "moshi-hook"
       {
         name = "borders";
         start_service = true;

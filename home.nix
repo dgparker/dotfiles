@@ -17,6 +17,13 @@ in
     lazygit
     neovim
     nerd-fonts.hack
+
+    # Protocol Buffer and Buf tooling for contract-first API repositories.
+    buf
+    protobuf
+    protoc-gen-go
+    protoc-gen-go-grpc
+    protoc-gen-connect-go
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
