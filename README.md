@@ -76,6 +76,11 @@ The Parrot configuration expects the account name `parrot` and home directory
 packages, kernel, desktop, and security-tool metapackages remain managed by the
 operating system.
 
+Packages used on every platform belong in `home.packages` in `home.nix`.
+Packages needed only on Parrot OS belong in `home.packages` in `parrot.nix`.
+The two lists are merged by Home Manager when the Parrot configuration is
+activated.
+
 After the first activation, `build.sh` checks the login shell used by SSH. If
 the account does not already use Zsh, it registers the Nix-managed Zsh in
 `/etc/shells` and selects it with `chsh`. This requires `sudo` on the first run;
