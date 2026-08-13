@@ -1,19 +1,22 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   dotfiles = "${config.home.homeDirectory}/.dotfiles";
 in
 
 {
-  home.username = "dylan";
-  home.homeDirectory = "/Users/dylan";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
     tree-sitter
-    ripgrep   
-    fd        
-    fzf       
-    jq        
+    ripgrep
+    fd
+    fzf
+    jq
     lazygit
     neovim
     nerd-fonts.hack
@@ -32,8 +35,8 @@ in
 
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;      
-    syntaxHighlighting.enable = true;  
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
     initContent = ''
       export OPENCODE_ENABLE_EXA=1
 
@@ -69,25 +72,24 @@ in
     };
   };
 
-  home.file.".config/ghostty".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/ghostty";
-  home.file.".config/nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
-  home.file.".config/herdr".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";
-  home.file.".config/aerospace".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/aerospace";
-  home.file.".config/borders/bordersrc".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/borders/bordersrc";
-  home.file.".claude/settings.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
-
-  home.file.".claude/CLAUDE.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
-  home.file.".codex/AGENTS.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
-  home.file.".config/opencode/opencode.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/opencode/opencode.json";
-  home.file.".config/opencode/AGENTS.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  home.file = {
+    ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/ghostty";
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
+    ".config/herdr".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";
+    ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.tmux.conf";
+    ".claude/settings.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
+    ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+    ".codex/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+    ".config/opencode/opencode.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/opencode/opencode.json";
+    ".config/opencode/AGENTS.md".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  }
+  // lib.optionalAttrs pkgs.stdenv.isDarwin {
+    ".config/aerospace".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/aerospace";
+    ".config/borders/bordersrc".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/borders/bordersrc";
+  };
 }
