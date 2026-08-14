@@ -71,6 +71,8 @@
       "bufbuild/buf/buf"
       "mosh"
       "moshi-hook"
+      "openvpn"
+      "virtctl"
       {
         name = "borders";
         start_service = true;
@@ -89,6 +91,7 @@
       "discord"
       "spotify"
       "docker-desktop"
+      "tigervnc"
     ];
   };
 }
