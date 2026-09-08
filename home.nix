@@ -73,6 +73,14 @@ in
   };
 
   home.file = {
+    ".agents/skills/prd".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.agents/skills/prd";
+    ".agents/skills/rfc".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.agents/skills/rfc";
+    ".local/bin/htb-proxy".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.local/bin/htb-proxy";
+    ".local/bin/vpn-upload.sh".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.local/bin/vpn-upload.sh";
     ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/ghostty";
     ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
     ".config/herdr".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";

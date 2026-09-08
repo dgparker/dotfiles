@@ -15,6 +15,7 @@ than NixOS.
 - Native `x86_64-linux` and `aarch64-linux` Home Manager configurations for Parrot OS
 - App configuration under `home/.config`
 - Shared agent instructions for Claude, Codex, and OpenCode
+- Reusable agent skills under `home/.agents/skills`, installed through Home Manager
 
 ## Layout
 
@@ -28,6 +29,7 @@ than NixOS.
 +-- build.sh               # Applies the correct config for macOS or Linux
 `-- home/
     +-- AGENTS.md          # Shared agent instructions
+    +-- .agents/skills/    # Portable prd and rfc agent skills
     `-- .config/           # App configs symlinked into ~/.config
 ```
 
@@ -107,6 +109,19 @@ Current behavior:
 - `FelixKratz/formulae` is tapped and trusted
 - `borders` is installed and started as a Homebrew service
 
+### Temporary AeroSpace compatibility bypass
+
+The pinned Homebrew 6.0.15 cannot parse the AeroSpace cask's `must_succeed`
+keyword. Activation temporarily sets `HOMEBREW_BUNDLE_CASK_SKIP=aerospace` through
+`homebrew.onActivation.extraEnv`, which passes it to Homebrew after `sudo`.
+AeroSpace remains declared so bundle cleanup retains the installed app.
+
+This pauses AeroSpace installation and upgrades, including installation on a new
+machine. Other declared packages continue to be managed. To retire the bypass,
+update the pinned Homebrew with `nix flake update nix-homebrew` and apply the
+configuration. Once `brew info --cask nikitabobko/tap/aerospace` succeeds, remove
+the skip setting and apply again. Do not edit the generated cask file.
+
 To add a formula, add it to `homebrew.brews`. To add a cask, add it to
 `homebrew.casks`.
 
@@ -122,3 +137,17 @@ home.file.".config/ghostty".source =
 
 This keeps app config files editable in the repo while still allowing Home
 Manager to own the destination paths.
+
+## Agent Skills
+
+Skill sources live under `home/.agents/skills`. Applying the dotfiles with
+`./build.sh` links `prd` and `rfc` into `~/.agents/skills` on either platform.
+
+| Skill | Purpose | Example |
+| --- | --- | --- |
+| `prd` | Define the problem, evidence, requirements, scope, and success criteria. | `Use $prd to clarify the problem and requirements for my project.` |
+| `rfc` | Propose a solution, explain tradeoffs, and derive bounded implementation tasks. | `Use $rfc to design a solution for this PRD.` |
+
+A PRD can lead to an RFC, but neither document is mandatory for every project.
+When both exist, the RFC references the PRD's requirements rather than duplicating
+them. Both skills support early drafts, feedback resolution, and decision history.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "RFC"
+  short_description: "Define project intent, scope, and build-ready tasks"
+  default_prompt: "Use $rfc to turn my project idea into an RFC with clear scope, acceptance criteria, and implementation tasks."

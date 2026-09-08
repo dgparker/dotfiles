@@ -1,0 +1,4 @@
+interface:
+  display_name: "PRD"
+  short_description: "Define problems, evidence, and scoped requirements"
+  default_prompt: "Use $prd to clarify my project problem, users, scope, and success criteria before choosing a solution."

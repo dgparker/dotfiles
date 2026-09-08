@@ -48,6 +48,10 @@
     onActivation.cleanup = "zap"; # remove anything not listed here
     onActivation.autoUpdate = true;
     onActivation.extraFlags = [ "--force" ];
+    # Temporary: brew 6.0.15 rejects the AeroSpace cask's must_succeed keyword.
+    # Keep its declaration below so bundle cleanup preserves the installed app.
+    # extraEnv reaches brew after sudo; remove once the pinned brew can parse it.
+    onActivation.extraEnv.HOMEBREW_BUNDLE_CASK_SKIP = "aerospace";
 
     taps = [
       {
@@ -92,6 +96,7 @@
       "spotify"
       "docker-desktop"
       "tigervnc"
+      "firefox"
     ];
   };
 }
