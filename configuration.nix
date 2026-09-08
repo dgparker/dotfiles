@@ -77,6 +77,7 @@
       "moshi-hook"
       "openvpn"
       "virtctl"
+      "doctl"
       {
         name = "borders";
         start_service = true;
